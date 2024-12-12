@@ -5,6 +5,11 @@ string mensagemBoasVindas = "\nBoas Vindas ao Screen Sound!";
 //List<string> listaDasBandas = new List<string>{"Charlie Brown Junior", "The Beatles"};
 Dictionary<string, List<int>> DicionarioBandas = new Dictionary<string, List<int>>();
 
+// Registrando dados ao dicionário
+DicionarioBandas.Add("Linkin Park", new List<int>{10, 8, 6});
+DicionarioBandas.Add("Charlie Brown Junior", new List<int>{10, 9, 10});
+DicionarioBandas.Add("The Beatles", new List<int>());
+
 
 
 void ExibirLogo() {
@@ -38,7 +43,7 @@ void ExibirOpcoesMenu() {
 
         case 1: RegistrarBanda(); break;
         case 2: ListarBandas(); break;
-        case 3: Console.WriteLine("Você escolheu a opção 3"); break;
+        case 3: AvaliarBanda(); break;
         case 4: Console.WriteLine("Você escolheu a opção 4"); break;
         case -1: Console.WriteLine("Encerrando..."); break;
 
@@ -82,6 +87,37 @@ void ExibirOpcoesMenu() {
         Console.ReadKey(); 
         Console.Clear();
         ExibirOpcoesMenu();
+
+    }
+
+    void AvaliarBanda() {
+
+        Console.Clear();
+        Console.WriteLine("AVALIAR BANDA >>>>");
+        Console.Write("Qual banda vai ser avaliada? ");
+        string nomeDaBanda = Console.ReadLine()!;
+
+        if(DicionarioBandas.ContainsKey(nomeDaBanda)){
+
+            Console.Write($"Qual nota a banda {nomeDaBanda} você deseja atribuir? ");
+            int nota = int.Parse(Console.ReadLine()!);
+
+            DicionarioBandas[nomeDaBanda].Add(nota);
+            Console.WriteLine($"A nota: {nota}, foi registrada com sucesso para a banda!");
+            Thread.Sleep(3000);
+            Console.Clear();
+            ExibirOpcoesMenu();
+
+        } else {
+
+            Console.WriteLine($"\nA banda {nomeDaBanda} não foi encontrada!");
+            Console.WriteLine("Pressione qualquer tecla para voltar ao menu principal");
+            Console.ReadKey(); 
+            Console.Clear();
+            ExibirOpcoesMenu();
+        }
+
+
 
     }
         
