@@ -34,7 +34,7 @@ void ExibirOpcoesMenu() {
     switch (opcaoEscolhidaNumerica) {
 
         case 1: RegistrarBanda(); break;
-        case 2: Console.WriteLine("Você escolheu a opção 2"); break;
+        case 2: ListarBandas(); break;
         case 3: Console.WriteLine("Você escolheu a opção 3"); break;
         case 4: Console.WriteLine("Você escolheu a opção 4"); break;
         case -1: Console.WriteLine("Encerrando..."); break;
@@ -46,8 +46,10 @@ void ExibirOpcoesMenu() {
     void RegistrarBanda() {
 
         Console.Clear();
+
         Console.WriteLine("REGISTRO DE BANDAS");
         Console.Write("\nDigite o nome da banda: ");
+
         string nomeDaBanda = Console.ReadLine()!;
         listaDasBandas.Add(nomeDaBanda);
 
@@ -60,8 +62,16 @@ void ExibirOpcoesMenu() {
     void ListarBandas(){
 
         Console.Clear();
-        Console.WriteLine("TODAS AS BANDAS >>>>");
+        Console.WriteLine("LISTANDO TODAS AS BANDAS >>>>");
+        Thread.Sleep(2000);
 
+        for (int i = 0; i < listaDasBandas.Count; i++) {
+            Console.WriteLine($"\nBanda: {listaDasBandas[i]}");
+        }
+
+        Console.WriteLine("Pressione qualquer tecla para voltar ao menu principal");
+        Console.ReadKey(); 
+        ExibirOpcoesMenu();
 
     }
         
