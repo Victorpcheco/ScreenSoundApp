@@ -2,7 +2,10 @@
 using System.Runtime.CompilerServices;
 
 string mensagemBoasVindas = "\nBoas Vindas ao Screen Sound!";
-List<string> listaDasBandas = new List<string>();
+//List<string> listaDasBandas = new List<string>{"Charlie Brown Junior", "The Beatles"};
+Dictionary<string, List<int>> DicionarioBandas = new Dictionary<string, List<int>>();
+
+
 
 void ExibirLogo() {
 
@@ -51,10 +54,12 @@ void ExibirOpcoesMenu() {
         Console.Write("\nDigite o nome da banda: ");
 
         string nomeDaBanda = Console.ReadLine()!;
-        listaDasBandas.Add(nomeDaBanda);
+        //listaDasBandas.Add(nomeDaBanda);
+        DicionarioBandas.Add(nomeDaBanda, new List<int>());
+
 
         Console.WriteLine($"A banda {nomeDaBanda} foi registrada com sucesso!!");
-        Thread.Sleep(3000);
+        Thread.Sleep(2000);
         Console.Clear();
         ExibirOpcoesMenu();
     }
@@ -65,12 +70,17 @@ void ExibirOpcoesMenu() {
         Console.WriteLine("LISTANDO TODAS AS BANDAS >>>>");
         Thread.Sleep(2000);
 
-        for (int i = 0; i < listaDasBandas.Count; i++) {
-            Console.WriteLine($"\nBanda: {listaDasBandas[i]}");
+        // for (int i = 0; i < listaDasBandas.Count; i++) {
+        //     Console.WriteLine($"Banda: {listaDasBandas[i]}");
+        // }
+
+        foreach (string banda in DicionarioBandas.Keys) {
+            Console.WriteLine($"Banda: {banda}");
         }
 
-        Console.WriteLine("Pressione qualquer tecla para voltar ao menu principal");
+        Console.WriteLine("\nPressione qualquer tecla para voltar ao menu principal");
         Console.ReadKey(); 
+        Console.Clear();
         ExibirOpcoesMenu();
 
     }
